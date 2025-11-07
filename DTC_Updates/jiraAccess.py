@@ -4,9 +4,10 @@ from jira import JIRA
 # tokenLocation = r"C:\Users\oliana.cintasgrau\Desktop\token.txt"
 
 class JiraStatus:
-    def __init__(self, user, tokenPath):
+    def __init__(self, tokenPath):
         with open(tokenPath, 'r') as f:
             token=f.readline()
+            user=f.readline()
         self.jiraSession=JIRA(server= 'https://mclaren-automotive.atlassian.net',basic_auth=(user,token.rstrip()))
         
     def jquery(self, jql):
