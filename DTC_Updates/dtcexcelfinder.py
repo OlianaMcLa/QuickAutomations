@@ -48,15 +48,18 @@ def getDtc(excelPath, ecus=[], sheet='conf'):
 def getAllDtc(excelPath, ecus=[]):
     data=[]
     dtcExcel = ExcelDtcInfo(excelPath=excelPath)
-    datac = dtcExcel.getDtcFromSheet(dtcExcel.findTheRightSheet('conf'))
+    datac=[]
+    datap=[]
+    datas=[]
+    if dtcExcel.findTheRightSheet('conf')!=-1:datac = dtcExcel.getDtcFromSheet(dtcExcel.findTheRightSheet('conf'))
     for c in datac:
         c.append('c')
         data.append(c)
-    datap = dtcExcel.getDtcFromSheet(dtcExcel.findTheRightSheet('pend'))
+    if dtcExcel.findTheRightSheet('pend')!=-1:datap = dtcExcel.getDtcFromSheet(dtcExcel.findTheRightSheet('pend'))
     for p in datap:
         p.append('p')
         data.append(p)
-    datas = dtcExcel.getDtcFromSheet(dtcExcel.findTheRightSheet('slc'))
+    if dtcExcel.findTheRightSheet('slc')!=-1:datas = dtcExcel.getDtcFromSheet(dtcExcel.findTheRightSheet('slc'))
     for s in datas:
         s.append('s')
         data.append(s)

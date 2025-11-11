@@ -95,6 +95,6 @@ class JiraStatus:
         issue=self.getIssue(issueId)
         return issue.fields.assignee
     
-    def newTicket(self, projectKey, summary, description, labels=[], programme='', date='', vehicle=''):
-        newIssue=self.jiraSession.create_issue(project={'key':projectKey}, summary=summary, description=description, issuetype={'name':'Fault'}, labels=labels, customfield_10037=programme, customfield_10669=date, customfield_10687=vehicle)
+    def newTicket(self, projectKey, summary, description, labels=[], nOccurrences=0, programme='', date='', vehicle=''):
+        newIssue=self.jiraSession.create_issue(project={'key':projectKey}, summary=summary, description=description, issuetype={'name':'Fault'}, labels=labels,customfield_10044=nOccurrences, customfield_10037=programme, customfield_10669=date, customfield_10687=vehicle)
         return newIssue.key
